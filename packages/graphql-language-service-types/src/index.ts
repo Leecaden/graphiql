@@ -10,7 +10,8 @@ import {
   Diagnostic as DiagnosticType,
   Position as PositionType,
   CompletionItem as CompletionItemType,
-} from 'vscode-languageserver-protocol';
+  SymbolKind,
+} from 'vscode-languageserver-types';
 import { GraphQLSchema, KindEnum } from 'graphql';
 import {
   ASTNode,
@@ -28,6 +29,8 @@ import {
   GraphQLType,
 } from 'graphql/type/definition';
 import { GraphQLDirective } from 'graphql/type/directives';
+
+export * from 'vscode-languageserver-types';
 
 export { GraphQLConfig, GraphQLProjectConfig };
 import { GraphQLConfig, GraphQLProjectConfig } from 'graphql-config';
@@ -328,7 +331,7 @@ export type OutlineTree = {
   plainText?: string;
   tokenizedText?: TokenizedText;
   representativeName?: string;
-
+  kind: SymbolKind;
   startPosition: Position;
   endPosition?: Position;
   children: OutlineTree[];
